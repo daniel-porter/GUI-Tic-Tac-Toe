@@ -50,7 +50,7 @@ public class TicTacToeFrame extends JFrame {
 
 
     private void CreateTicTacToeTile() {
-TicTacToePanel = new JPanel(new GridLayout(ROW, COL));
+        TicTacToePanel = new JPanel(new GridLayout(ROW, COL));
 
         for (int row = 0; row < ROW; row++) {
             for (int col = 0; col < COL; col++) {
@@ -92,31 +92,31 @@ TicTacToePanel = new JPanel(new GridLayout(ROW, COL));
                 return;
             }
 
-        player = player.equals("X") ? "O" : "X";
-    } else {
-                JOptionPane.showMessageDialog(this, "Invalid Move!");
+            player = player.equals("X") ? "O" : "X";
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid Move!");
         }
     }
 
     private void playagain() {
 
-            String[] options = {"Yes", "No"};
-            int choice = JOptionPane.showOptionDialog(
-                    null,
-                    "Would you like to play again?",
-                    "TicTacToe",
-                    JOptionPane.DEFAULT_OPTION,
-                    JOptionPane.PLAIN_MESSAGE,
-                    null,
-                    options,
-                    options[0]
-            );
-            if (choice == 0) {
-                clearBoard();
-            }
-            if (choice == 1) {
-                System.exit(0);
-            }
+        String[] options = {"Yes", "No"};
+        int choice = JOptionPane.showOptionDialog(
+                null,
+                "Would you like to play again?",
+                "TicTacToe",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                options,
+                options[0]
+        );
+        if (choice == 0) {
+            clearBoard();
+        }
+        if (choice == 1) {
+            System.exit(0);
+        }
     }
 
 
@@ -132,23 +132,19 @@ TicTacToePanel = new JPanel(new GridLayout(ROW, COL));
             // Check all 8 win vectors for an X and O so
             // no win is possible
             // Check for row ties
-            for(int row=0; row < ROW; row++)
-            {
-                if(Board[row][0].getPlayer().equals("X") ||
+            for (int row = 0; row < ROW; row++) {
+                if (Board[row][0].getPlayer().equals("X") ||
                         Board[row][1].getPlayer().equals("X") ||
-                        Board[row][2].getPlayer().equals("X"))
-                {
+                        Board[row][2].getPlayer().equals("X")) {
                     xFlag = true; // there is an X in this row
                 }
-                if(Board[row][0].getPlayer().equals("O") ||
+                if (Board[row][0].getPlayer().equals("O") ||
                         Board[row][1].getPlayer().equals("O") ||
-                        Board[row][2].getPlayer().equals("O"))
-                {
+                        Board[row][2].getPlayer().equals("O")) {
                     oFlag = true; // there is an O in this row
                 }
 
-                if(! (xFlag && oFlag) )
-                {
+                if (!(xFlag && oFlag)) {
                     return false; // No tie can still have a row win
                 }
 
@@ -156,64 +152,56 @@ TicTacToePanel = new JPanel(new GridLayout(ROW, COL));
 
             }
             // Now scan the columns
-            for(int col=0; col < COL; col++)
-            {
-                if(Board[0][col].getPlayer().equals("X") ||
+            for (int col = 0; col < COL; col++) {
+                if (Board[0][col].getPlayer().equals("X") ||
                         Board[1][col].getPlayer().equals("X") ||
-                        Board[2][col].getPlayer().equals("X"))
-                {
+                        Board[2][col].getPlayer().equals("X")) {
                     xFlag = true; // there is an X in this col
                 }
-                if(Board[0][col].getPlayer().equals("O") ||
+                if (Board[0][col].getPlayer().equals("O") ||
                         Board[1][col].getPlayer().equals("O") ||
-                        Board[2][col].getPlayer().equals("O"))
-                {
+                        Board[2][col].getPlayer().equals("O")) {
                     oFlag = true; // there is an O in this col
                 }
 
-                if(! (xFlag && oFlag) )
-                {
+                if (!(xFlag && oFlag)) {
                     return false; // No tie can still have a col win
                 }
             }
             // Now check for the diagonals
             xFlag = oFlag = false;
 
-            if(Board[0][0].getPlayer().equals("X") ||
+            if (Board[0][0].getPlayer().equals("X") ||
                     Board[1][1].getPlayer().equals("X") ||
-                    Board[2][2].getPlayer().equals("X") )
-            {
+                    Board[2][2].getPlayer().equals("X")) {
                 xFlag = true;
             }
-            if(Board[0][0].getPlayer().equals("O") ||
+            if (Board[0][0].getPlayer().equals("O") ||
                     Board[1][1].getPlayer().equals("O") ||
-                    Board[2][2].getPlayer().equals("O") )
-            {
+                    Board[2][2].getPlayer().equals("O")) {
                 oFlag = true;
             }
-            if(! (xFlag && oFlag) )
-            {
+            if (!(xFlag && oFlag)) {
                 return false; // No tie can still have a diag win
             }
             xFlag = oFlag = false;
 
-            if(Board[0][2].getPlayer().equals("X") ||
+            if (Board[0][2].getPlayer().equals("X") ||
                     Board[1][1].getPlayer().equals("X") ||
-                    Board[2][0].getPlayer().equals("X") )
-            {
-                xFlag =  true;
+                    Board[2][0].getPlayer().equals("X")) {
+                xFlag = true;
             }
-            if(Board[0][2].getPlayer().equals("O") ||
+            if (Board[0][2].getPlayer().equals("O") ||
                     Board[1][1].getPlayer().equals("O") ||
-                    Board[2][0].getPlayer().equals("O") )
-            {
-                oFlag =  true;
+                    Board[2][0].getPlayer().equals("O")) {
+                oFlag = true;
             }
             return xFlag && oFlag; // No tie can still have a diag win
 
             // Checked every vector so I know I have a tie
         }
     }
+
     private static boolean isColWin(String player) {
         for (int col = 0; col < COL; col++) {
             if (Board[0][col].getPlayer().equals(player) &&
@@ -252,7 +240,8 @@ TicTacToePanel = new JPanel(new GridLayout(ROW, COL));
         DisplayBoard = new JPanel(new BorderLayout());
         JPanel displayTA = new JPanel(new BorderLayout());
         if (DisplayTicTacToeMove == null) {
-            DisplayTicTacToeMove = new JPanel();}
+            DisplayTicTacToeMove = new JPanel();
+        }
 
         displayTA.add(DisplayTicTacToeMove, BorderLayout.CENTER);
 
@@ -275,23 +264,20 @@ TicTacToePanel = new JPanel(new GridLayout(ROW, COL));
         ControlMovePanel.add(quitButton);
 
 
-
     }
-
-
 
 
     private void clearBoard() {
-    for (int row = 0; row < ROW; row++) {
-        for (int col = 0; col < COL; col++) {
-            Board[row][col].setPlayer("");
+        for (int row = 0; row < ROW; row++) {
+            for (int col = 0; col < COL; col++) {
+                Board[row][col].setPlayer("");
+            }
         }
-    }
-player = "X";
+        player = "X";
         playing = true;
     }
 
-private static class TicTacToeButton extends JButton {
+    private static class TicTacToeButton extends JButton {
         private int row;
         private int col;
         private String player;
@@ -306,21 +292,24 @@ private static class TicTacToeButton extends JButton {
         public int getRow() {
             return row;
         }
+
         public int getCol() {
             return col;
         }
+
         public String getPlayer() {
             return player;
         }
+
         public void setPlayer(String player) {
             this.player = player;
             setText(player);
         }
+
         public boolean isEmpty() {
             return player.isEmpty();
         }
-}
-
+    }
 
 
 }
